@@ -1,0 +1,17 @@
+%{
+    //c declaration
+    int count = 0;
+    void myprint(char*, char*);
+%}
+
+DIGIT [0-9]
+LETTER[A-Za-z]
+
+%%
+
+{DIGIT} + {myprint("intconst", yytext); count++};
+{LETTER}+({DIGIT|LETTER})* {myprint("identifier", yytext);}
+
+%%
+
+
